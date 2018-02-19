@@ -2,6 +2,7 @@ package nl.pellegroot.friendsr;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         friends.add(0, arya);
-        friends.add(1,cersei)
+        friends.add(1,cersei);
         friends.add(2,daenarys);
         friends.add(3, jaime);
         friends.add(4, jon);
@@ -35,6 +36,4 @@ public class MainActivity extends AppCompatActivity {
         friends.add(8, sansa);
         friends.add(9, tyrion);
     }
-
-
 }
