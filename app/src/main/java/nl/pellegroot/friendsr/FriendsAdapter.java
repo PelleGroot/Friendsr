@@ -16,6 +16,7 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
     public FriendsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Friend> objects) {
         super(context, resource, objects);
     }
+    public ArrayList friends;
 
     @NonNull
     @Override
@@ -23,6 +24,13 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
         }
+        convertView.findViewById(//view by id, so name your photos
+                );
+        friends.get(// int
+                );
+
+
         return convertView;
     }
 }
+
