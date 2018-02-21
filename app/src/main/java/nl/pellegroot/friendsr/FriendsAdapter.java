@@ -13,10 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FriendsAdapter extends ArrayAdapter<Friend> {
+    private int layoutResourceId;
+    private ArrayList friends;
+
     public FriendsAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Friend> objects) {
         super(context, resource, objects);
+        layoutResourceId = resource;
+        friends = objects;
     }
-    public ArrayList friends;
 
     @NonNull
     @Override
@@ -24,13 +28,18 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
         }
-        convertView.findViewById(//view by id, so name your photos
-                );
-        friends.get(// int
-                );
+        // TODO: Ask if this is right
+        convertView.findViewById(R.id.IG);
 
+        // TODO: Don't really understand how IO should continue with this part
+        // getting data from Arraylist friends
+        // providing the index of the friend we'd like to display
+//        friends.get();
+
+        // TODO: Need some assistance with this part
+        // To load drawable image for putting into ImageView
+//        getContext().getResources().getDrawable();
 
         return convertView;
     }
 }
-
