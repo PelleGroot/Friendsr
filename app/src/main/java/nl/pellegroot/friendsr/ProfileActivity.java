@@ -23,19 +23,37 @@ public class ProfileActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.img);
         TextView txtBio = (TextView) findViewById(R.id.txtBio);
         TextView txtName = (TextView) findViewById(R.id.txtName);
+        RatingBar ratingbar = (RatingBar) findViewById(R.id.ratingbar);
 
         imageView.setImageDrawable(getResources().getDrawable(retrievedFriend.getDrawableId()));
         txtBio.setText(retrievedFriend.getBio());
         txtName.setText(retrievedFriend.getName());
-
-        RatingBar ratingbar = (RatingBar) findViewById(R.id.ratingbar);
+        Log.d("Creating the rating", "Get rating: " + retrievedFriend.getRating());
+        Log.d("Creating the rating", "Get name: " + retrievedFriend.getName());
+        ratingbar.setRating(retrievedFriend.getRating());
         ratingbar.setOnRatingBarChangeListener(new OnRatingBarChangeListener());
 
+        // TODO: figure out what to store
+//        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+//        Float storedFloat = prefs.getFloat("RatingFriend", 0);
+//        retrievedFriend.setRating(storedFloat);
+//        Log.d("after creating the rating", "Get rating: " + retrievedFriend.getRating());
+//
+//        if(storedFloat != 0) {
+//            // we have something stored under "example_key"
+//            Log.d("within the if", "storedFloat: " + storedFloat);
+////            retrievedFriend.setRating(storedFloat);
+//        }
+//        else {
+//            // there is nothing stored under "example_key"
+//            ratingbar.setRating(0);
+//        }
     }
 
     private class OnRatingBarChangeListener implements RatingBar.OnRatingBarChangeListener{
         @Override
         public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+            Log.d("Within onRatingChange", "onRatingChanged: " + v);
             SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
             editor.putFloat("RatingFriend", v);
             editor.apply();

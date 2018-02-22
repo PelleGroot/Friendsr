@@ -1,6 +1,7 @@
 package nl.pellegroot.friendsr;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,25 +49,33 @@ public class MainActivity extends AppCompatActivity {
 
         // instantiate the adapter
         FriendsAdapter adapter = new FriendsAdapter( this, R.layout.grid_item, friends);
+
         // access the gridview by using the ID
         GridView view = (GridView) findViewById(R.id.GV);
+
         // set the adapter on the grid view
         view.setAdapter(adapter);
 
-        GridView GV = (GridView) findViewById(R.id.GV);
-        GV.setOnItemClickListener(new GridItemClickListener());
-
+        // set listener
+        view.setOnItemClickListener(new GridItemClickListener());
     }
 
     private class GridItemClickListener implements AdapterView.OnItemClickListener{
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            // find the friend that is clicked
             Friend clickedFriend = (Friend) adapterView.getItemAtPosition(i);
 
+            // send it to other activity
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             intent.putExtra("ClickedFriend", clickedFriend);
             startActivity(intent);
 
+            // TODO: Figure out what to store
+//            SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
+//            editor.putInt("positionFriend",i);
+//            editor.apply();
 //            Log.d("onItemClick: "  , "clicked: " + clickedFriend.getName());
         }
     }
