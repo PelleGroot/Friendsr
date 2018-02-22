@@ -1,12 +1,15 @@
 package nl.pellegroot.friendsr;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,17 +31,17 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
         }
-        // TODO: Ask if this is right
-        convertView.findViewById(R.id.IG);
+        // set the image and the text view to a variable
+        ImageView imageview = (ImageView) convertView.findViewById(R.id.imageArya);
+        TextView textview = (TextView) convertView.findViewById(R.id.TextArya);
 
-        // TODO: Don't really understand how IO should continue with this part
         // getting data from Arraylist friends
         // providing the index of the friend we'd like to display
-//        friends.get();
+        Friend friend = (Friend) friends.get(position);
 
-        // TODO: Need some assistance with this part
-        // To load drawable image for putting into ImageView
-//        getContext().getResources().getDrawable();
+        // To load drawable image for putting into ImageView by using the drawable id from friend
+        imageview.setImageDrawable(getContext().getResources().getDrawable(friend.getDrawableId()));
+        textview.setText(friend.getName());
 
         return convertView;
     }
