@@ -2,10 +2,8 @@ package nl.pellegroot.friendsr;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Rating;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -18,6 +16,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         Intent intent = getIntent();
+
         // set the ClickedFriend
         Friend retrievedFriend = (Friend) intent.getSerializableExtra("ClickedFriend");
 
@@ -31,28 +30,23 @@ public class ProfileActivity extends AppCompatActivity {
         imageView.setImageDrawable(getResources().getDrawable(retrievedFriend.getDrawableId()));
         txtBio.setText(retrievedFriend.getBio());
         txtName.setText(retrievedFriend.getName());
-//        Log.d("Creating the rating", "Get rating: " + retrievedFriend.getRating());
-//        Log.d("Creating the rating", "Get name: " + retrievedFriend.getName());
 
         // set rating
         ratingbar.setOnRatingBarChangeListener(new OnRatingBarChangeListener());
 
-        // TODO: figure out what to store
+        // get the rating from the shared pref
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
         Float storedFloat = prefs.getFloat(retrievedFriend.getName(), 0);
-//        retrievedFriend.setRating(storedFloat);
-        Log.d("onRetrieve: ",retrievedFriend.getName() + " " + storedFloat);
 
         if(storedFloat != 0) {
-            // we have something stored under "example_key"
-//            Log.d("within the if", "storedFloat: " + storedFloat);
+            // if stored, set it to the according friend
             retrievedFriend.setRating(storedFloat);
         }
         else {
-            // there is nothing stored under "example_key"
+            // if nothing is stored, set zero
             ratingbar.setRating(0);
         }
-
+        // set the ratingbar
         ratingbar.setRating(retrievedFriend.getRating());
     }
 
@@ -63,8 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = getIntent();
             Friend retrievedFriend = (Friend) intent.getSerializableExtra("ClickedFriend");
 
-            Log.d("onSave: ",retrievedFriend.getName() + " " + v );
-
+            // save the rating to the friend in the shared prefs
             SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
             editor.putFloat(retrievedFriend.getName(), v);
             editor.apply();

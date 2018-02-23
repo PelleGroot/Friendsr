@@ -1,13 +1,10 @@
 package nl.pellegroot.friendsr;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -71,12 +68,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             intent.putExtra("ClickedFriend", clickedFriend);
             startActivity(intent);
-
-            // TODO: Figure out what to store
-//            SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
-//            editor.putInt("positionFriend",i);
-//            editor.apply();
-//            Log.d("onItemClick: "  , "clicked: " + clickedFriend.getName());
         }
     }
 }
