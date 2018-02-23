@@ -35,14 +35,13 @@ public class ProfileActivity extends AppCompatActivity {
 //        Log.d("Creating the rating", "Get name: " + retrievedFriend.getName());
 
         // set rating
-        ratingbar.setRating(retrievedFriend.getRating());
         ratingbar.setOnRatingBarChangeListener(new OnRatingBarChangeListener());
 
         // TODO: figure out what to store
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        Float storedFloat = prefs.getFloat("RatingFriend", 0);
-        retrievedFriend.setRating(storedFloat);
-//        Log.d("after creating the rating", "Get rating: " + retrievedFriend.getRating());
+        Float storedFloat = prefs.getFloat(retrievedFriend.getName(), 0);
+//        retrievedFriend.setRating(storedFloat);
+        Log.d("onRetrieve: ",retrievedFriend.getName() + " " + storedFloat);
 
         if(storedFloat != 0) {
             // we have something stored under "example_key"
@@ -53,14 +52,21 @@ public class ProfileActivity extends AppCompatActivity {
             // there is nothing stored under "example_key"
             ratingbar.setRating(0);
         }
+
+        ratingbar.setRating(retrievedFriend.getRating());
     }
 
     private class OnRatingBarChangeListener implements RatingBar.OnRatingBarChangeListener{
         @Override
         public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-            Log.d("Within onRatingChange", "onRatingChanged: " + v);
+            // set the ClickedFriend
+            Intent intent = getIntent();
+            Friend retrievedFriend = (Friend) intent.getSerializableExtra("ClickedFriend");
+
+            Log.d("onSave: ",retrievedFriend.getName() + " " + v );
+
             SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
-            editor.putFloat("RatingFriend", v);
+            editor.putFloat(retrievedFriend.getName(), v);
             editor.apply();
         }
     }
