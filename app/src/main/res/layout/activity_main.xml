@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="12dp"
     android:visibility="visible"
     tools:context="nl.pellegroot.friendsr.MainActivity">
 
@@ -13,6 +14,7 @@
         android:id="@+id/GV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="12dp"
         android:numColumns="3"
         android:stretchMode="columnWidth" />
 </LinearLayout>
