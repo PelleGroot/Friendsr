@@ -4,21 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/IG"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/imageArya"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp"
-        app:srcCompat="@drawable/arya" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/arya"
+        android:layout_weight="10"/>
 
     <TextView
         android:id="@+id/TextArya"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp"
-        android:textAlignment="center" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"/>
 
 </LinearLayout>
