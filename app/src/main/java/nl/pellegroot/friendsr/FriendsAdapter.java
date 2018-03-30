@@ -1,7 +1,6 @@
 package nl.pellegroot.friendsr;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,9 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FriendsAdapter extends ArrayAdapter<Friend> {
     private int layoutResourceId;
@@ -35,7 +32,6 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         ImageView imageview = (ImageView) convertView.findViewById(R.id.imageArya);
         TextView textview = (TextView) convertView.findViewById(R.id.TextArya);
 
-        // getting data from Arraylist friends
         // providing the index of the friend we'd like to display
         Friend friend = (Friend) friends.get(position);
 
