@@ -8,7 +8,7 @@
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         tools:context="nl.pellegroot.friendsr.ProfileActivity">
 
         <ImageView
@@ -21,38 +21,46 @@
             android:padding="5dp"
             app:srcCompat="@drawable/arya" />
 
-        <RatingBar
-            android:id="@+id/ratingbar"
-            style="@style/Widget.AppCompat.RatingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.5"
-            android:numStars="5"
-            android:overScrollMode="always"
-            android:padding="5dp"
-            android:stepSize="0.5" />
-
-        <TextView
-            android:id="@+id/txtName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill_horizontal"
-            android:layout_weight="2"
-            android:fontFamily="cursive"
-            android:padding="5dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txtBio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="3"
-            android:padding="5dp"
-            android:text="TextView"
-            android:textAlignment="center" />
+            android:orientation="vertical">
+
+            <RatingBar
+                android:id="@+id/ratingbar"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:numStars="5"
+                android:overScrollMode="always"
+                android:padding="5dp"
+                android:stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:layout_weight="0.5"
+                android:fontFamily="cursive"
+                android:padding="5dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtBio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:padding="5dp"
+                android:text="TextView"
+                android:textAlignment="center" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
